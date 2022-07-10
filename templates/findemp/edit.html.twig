@@ -1,0 +1,49 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}
+  Edit Findemp
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+   <!-- Section: Design Block -->
+<section class="text-center mt-5">
+  <!-- Background image -->
+  <div class="p-5 bg-image" style="
+        height: 100px;
+        ">
+        </div>
+  <!-- Background image -->
+
+  <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: -100px;
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        ">
+    <div class="card-body py-5 px-md-5">
+
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">Envoyer email à <i class="text-muted">{{findemp.nom}}</i></h2>
+          
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row">
+             
+   {{ form_start(form) }}
+      {{ form_widget(form) }}
+
+      <button class="btn btn-success"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+  {{ button_label|default('Submit') }}</button>
+
+  {{ form_end(form) }}
+              </div>
+
+            <!-- Email input -->
+          
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->
+  </div>
+{% endblock %}

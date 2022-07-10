@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  New Findemp
+{% endblock %}
+
+{% block body %}
+  <style>
+    .custom-file-button { input[type="file"] { margin-left: -2px !important;
+
+    &::-webkit-file-upload-button { display: none; } &::file-selector-button {
+    display: none; } }
+
+    &:hover { label { background-color: #dde0e3; cursor: pointer; } } }
+  </style>
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="text-center pb-5">
+          Searching for employees
+        </h3>
+        {% if app.session.flashBag.has('registration') %}
+          <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('registration') %}
+              {{ msg }}
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {{ include('findemp/_form.html.twig') }}
+
+        <div class="loader">
+          <div class="loading"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {# {{ include('emplopyer/_form.html.twig') }} #}
+
+  <script type="text/javascript">
+    function spinner() {
+    document.getElementsByClassName("loader")[0].style.display = "block"; }
+  </script>
+{% endblock %}

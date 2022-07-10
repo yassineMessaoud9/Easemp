@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Emplopyer index{% endblock %}
+
+{% block body %}
+    <h1>Emplopyer index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Numerotel</th>
+                <th>Cv</th>
+                <th>Specialite</th>
+                <th>Adresse</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for emplopyer in emplopyers %}
+            <tr>
+                <td>{{ emplopyer.id }}</td>
+                <td>{{ emplopyer.nom }}</td>
+                <td>{{ emplopyer.prenom }}</td>
+                <td>{{ emplopyer.email }}</td>
+                <td>{{ emplopyer.numerotel }}</td>
+                <td>{{ emplopyer.cv }}</td>
+                <td>{{ emplopyer.specialite }}</td>
+                <td>{{ emplopyer.adresse }}</td>
+                <td>
+                    <a href="{{ path('app_emplopyer_show', {'id': emplopyer.id}) }}">show</a>
+                    <a href="{{ path('app_emplopyer_edit', {'id': emplopyer.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('app_emplopyer_new') }}">Create new</a> #}
+{% endblock %}

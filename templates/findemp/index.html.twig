@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Findemp index{% endblock %}
+
+{% block body %}
+    <h1>Findemp index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Domaine</th>
+                <th>Email</th>
+                <th>Numero</th>
+                <th>Place</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for findemp in findemps %}
+            <tr>
+                <td>{{ findemp.id }}</td>
+                <td>{{ findemp.nom }}</td>
+                <td>{{ findemp.domaine }}</td>
+                <td>{{ findemp.email }}</td>
+                <td>{{ findemp.numero }}</td>
+                <td>{{ findemp.place }}</td>
+                <td>
+                    <a href="{{ path('app_findemp_show', {'id': findemp.id}) }}">show</a>
+                    <a href="{{ path('app_findemp_edit', {'id': findemp.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_findemp_new') }}">Create new</a>
+{% endblock %}
