@@ -18,8 +18,8 @@
   <div class="container mt-5">
     <div class="card">
       <div class="card-body">
-        <h3 class="text-center pb-5">
-          Apply For A Job
+        <h3 data-lang='appnow' class="text-center pb-5">
+          Apply Now
         </h3> {% if app.session.flashBag.has('registration') %}
           <div class="alert alert-success">
             {% for msg in app.session.flashBag.get('registration') %}
@@ -38,15 +38,6 @@
   </div>
   {# {{ include('emplopyer/_form.html.twig') }} #}
 
-  <script type="text/javascript">
-    function spinner() {
-    document.getElementsByClassName("loader")[0].style.display = "block"; }
-  </script>
+   <script type="text/javascript" src="{{ asset('bundles/yourBundle/theNameOfTheScriptYouPutInRessourcesPublic.js') }}"></script>
 
-  <script>
-    let foo = document.getElementById("emplopyer_specialite"); let bar =
-    document.getElementById("emplopyer_otherspec"); $(function() {
-    $('#emplopyer_specialite').change(function(){ $('#emplopyer_otherspec')[
-    ($("option[value='Others']").is(":checked"))? "show" : "hide" ](); }); });
-  </script>
 {% endblock %}

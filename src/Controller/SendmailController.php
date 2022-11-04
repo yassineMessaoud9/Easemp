@@ -15,12 +15,22 @@ class SendmailController extends AbstractController
     /**
      * @Route("/sendmail", name="app_sendmail")
      */
-    public function index(): Response
+    public function SendMail(\Swift_Mailer $mailer)
     {
-        return $this->render('sendmail/index.html.twig', [
-            'controller_name' => 'SendmailController',
-        ]);
+        $message = (new \Swift_Message("test"))
+
+            ->setFrom('contact@easemploy.com')
+            ->setTo('yassine.messaoud98@gmail.com')
+            ->setBody(
+                'teeeeeeeeeeest'
+            );
+
+        // you can remove the following code if you don't define a text version for your emails
+
+        $mailer->send($message);
+        return new Response("<script>alert('Mail envoyee')</script>");
     }
+
 
    
 }

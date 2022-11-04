@@ -80,11 +80,21 @@ class Emplopyer
      */
     private $etat='En attente';
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $archived=0;
+
     public function getId(): ?int
     {
         return $this->id;
     }
+    public function setId(int $Id): self
+    {
+        $this->Id = $Id;
 
+        return $this;
+    }
     public function getNom(): ?string
     {
         return $this->nom;
@@ -201,6 +211,18 @@ class Emplopyer
     public function setEtat(?string $etat): self
     {
         $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getArchived(): ?bool
+    {
+        return $this->archived;
+    }
+
+    public function setArchived(?bool $archived): self
+    {
+        $this->archived = $archived;
 
         return $this;
     }

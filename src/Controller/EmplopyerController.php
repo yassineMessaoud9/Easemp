@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class EmplopyerController extends AbstractController
 {
-   
+
     /**
      * @Route("/conf", name="app_emmplopyer_conf", methods={"GET"})
      */
@@ -41,7 +41,7 @@ class EmplopyerController extends AbstractController
             $to = $emplopyer->getEmail();
             $name = $emplopyer->getNom();
             $objet = 'Registration';
-            
+
             // return $this->redirectToRoute('app_emplopyer_index', [], Response::HTTP_SEE_OTHER);
             $file = $form->get('cv')->getData();
             $Filename = md5(uniqid()) . '.' . $file->guessExtension();
@@ -50,8 +50,9 @@ class EmplopyerController extends AbstractController
             } catch (FileException $e) {
             }
             $emplopyer->setCv($Filename);
+
             $emplopyerRepository->add($emplopyer);
-            $this->SendMail($mailer, $to, $objet);
+       $this->SendMail($mailer, $to, $objet);
             $request
                 ->getSession()
                 ->getFlashBag()
@@ -60,7 +61,8 @@ class EmplopyerController extends AbstractController
                     'Thank you for registering on our platform,
                  you will receive a confirmation email, and we will reply to you as soon as possible'
                 );
-            return $this->redirectToRoute('app_employer_new');
+         return $this->redirectToRoute('app_employer_new');
+         //   dd($form->getData());
         }
 
         return $this->render('emplopyer/new.html.twig', [
@@ -73,14 +75,15 @@ class EmplopyerController extends AbstractController
     {
         $message = (new \Swift_Message($objet))
 
-            ->setFrom('easemploy@outlook.com')
+            ->setFrom('contact@easemploy.com')
             ->setTo($to)
-            ->setBody( 
+            ->setBody(
                 $this->renderView(
-                // templates/emails/registration.html.twig
-                'emplopyer/confirmation.html.twig'),
+                    // templates/emails/registration.html.twig
+                    'emplopyer/confirmation.html.twig'
+                ),
                 'text/html'
-                );
+            );
 
         // you can remove the following code if you don't define a text version for your emails
 
@@ -89,7 +92,7 @@ class EmplopyerController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="app_emplopyer_edit", methods={"GET", "POST"})
+     * @Route("/{id}/edit", name="app_emplopyer_edit", methods={"GET", "POST"}, requirements={"id":"\d+"})
      */
     public function edit(
         Request $request,
@@ -115,7 +118,7 @@ class EmplopyerController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="app_emplopyer_delete", methods={"POST"})
+     * @Route("/{id}", name="app_emplopyer_delete", methods={"POST"}, requirements={"id":"\d+"})
      */
     public function delete(
         Request $request,
@@ -133,6 +136,43 @@ class EmplopyerController extends AbstractController
 
         return $this->redirectToRoute(
             'app_emplopyer_index',
+            [],
+            Response::HTTP_SEE_OTHER
+        );
+    }
+
+
+     /**
+     * @Route("/dashboard/archiver/{id}", name="app_emplopyer_archive",  methods={"GET", "POST"}, requirements={"id":"\d+"})
+     */
+    public function archiver(
+        Request $request,
+        Emplopyer $emplopyer,
+        EmplopyerRepository $emplopyerRepository
+    ): Response {
+       $emplopyer->setArchived(1);
+       $emplopyerRepository->add($emplopyer);
+
+        return $this->redirectToRoute(
+            'app_archive',
+            [],
+            Response::HTTP_SEE_OTHER
+        );
+    }
+
+     /**
+     * @Route("/dashboard/desarchiver/{id}", name="app_emplopyer_desarchiver",  methods={"GET", "POST"}, requirements={"id":"\d+"})
+     */
+    public function desarchiver(
+        Request $request,
+        Emplopyer $emplopyer,
+        EmplopyerRepository $emplopyerRepository
+    ): Response {
+       $emplopyer->setArchived(0);
+       $emplopyerRepository->add($emplopyer);
+
+        return $this->redirectToRoute(
+            'app_dashboard',
             [],
             Response::HTTP_SEE_OTHER
         );

@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AboutController!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.social-link {
+			width: 30px;
+			height: 30px;
+			border: 1px solid #ddd;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #666;
+			border-radius: 50%;
+			transition: all 0.3s;
+			font-size: 0.9rem;
+		}
+		.dot {
+			height: 225px;
+			width: 225px;
+			background-color: #bbb;
+			border-radius: 50%;
+			display: inline-block;
+		}
+		.social-link:hover,
+		.social-link:focus {
+			background: #ddd;
+			text-decoration: none;
+			color: #555;
+		}
+	</style>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<div class="bg-light">
+		<div class="container py-5">
+			<div class="row h-100 align-items-center py-5">
+				<div class="col-lg-6">
+					<h5 data-lang="abouthead1" class="display-4">Looking for employees?</h5>
+					<p data-lang="abouthead1text" class="lead text-muted mb-0">We bring candidates and companies together and take over the recruitment process and propose applicants to the company. We support in the search for personnel in the fields of medicine, healthcare, engineering, cleaning and much more...Through Easemploy, we offer great opportunities to cover the company's increasing need for personnel!</p>
+
+				</div>
+				<div class="col-lg-6 d-none d-lg-block"><img src="https://bootstrapious.com/i/snippets/sn-about/illus.png" alt="" class="img-fluid"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="bg-white py-5">
+		<div class="container py-5">
+			<div class="row align-items-center mb-5">
+				<div class="col-lg-6 order-2 order-lg-1">
+					<h2 data-lang="abouthead2" class="font-weight-light">Would you like to work in Germany?</h2>
+					<p data-lang="abouthead2text" class="font-italic text-muted mb-4">Would you like to work in Germany? Then get in touch with us or send us an application with an English or German CV.Apply for jobs in top locations in Germany such as Munich, Hamburg or Berlin.We are your contact for a fast and fair mediation. We are looking forward to seeing you.</p>
+				</div>
+				<div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img src="https://bootstrapious.com/i/snippets/sn-about/img-1.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="bg-light py-5">
+		<div class="container py-5">
+			<div class="row mb-4">
+				<div class="col-lg-5">
+					<h2 data-lang="team" class="display-4 font-weight-light">Our team</h2>
+				</div>
+			</div>
+
+			<div
+				class="row text-center">
+				<!-- Team item-->
+				<div class="col-xl-3 col-sm-6 mb-5"></div>
+				<!-- End-->
+
+				<!-- Team item-->
+				<div class="col-xl-3 col-sm-6 mb-5">
+					<div class="bg-white rounded shadow-sm py-5 px-4"><img src="/img/abir.jpg" alt="Abir Ouedherf photo" class="img-fluid dot mb-3 img-thumbnail shadow-sm">
+						<h5 class="mb-0">Abir Ouedherfi</h5>
+						<span data-lang='ceo' class="small text-uppercase text-muted">CEO - Founder</span>
+						<ul class="social mb-0 list-inline mt-3">
+
+							<li class="list-inline-item">
+								<a href="https://www.linkedin.com/in/abir-oudherfi-1bb7aba9/" class="social-link">
+									<i class="fa fa-linkedin"></i>
+
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- End-->
+
+				<!-- Team item-->
+				<div class="col-xl-3 col-sm-6 mb-5">
+				<div class="bg-white rounded shadow-sm py-5 px-4"><img src="/img/kadi.jpg" alt="Abir Ouedherf photo" class="img-fluid dot mb-3 img-thumbnail shadow-sm">
+						<h5 class="mb-0">Kadi Bantini</h5>
+						<span data-lang='ceo' class="small text-uppercase text-muted">CEO - Founder</span>
+						<ul class="social mb-0 list-inline mt-3">
+
+							<li class="list-inline-item">
+								<a href="https://www.linkedin.com/in/abir-oudherfi-1bb7aba9/" class="social-link">
+									<i class="fa fa-linkedin"></i>
+
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- End-->
+
+				<!-- Team item-->
+				<div class="col-xl-3 col-sm-6 "></div>
+				<!-- End-->
+
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

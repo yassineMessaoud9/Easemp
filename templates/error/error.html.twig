@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Error Page
+{% endblock %}
+
+
+{% block body %}
+
+  <style>
+.pulse {
+  animation: pulse 1s infinite ease-in-out alternate;
+}
+@keyframes pulse {
+  from { transform: scale(0.8); }
+  to { transform: scale(1.2); }
+}
+
+
+</style>
+
+	<div class="container mt-5">
+		<div class="card">
+			<div class="card-body">
+      
+      
+        <div class="d-flex align-items-center justify-content-center vh-100">
+            <div class="text-center">
+
+            <img class="rounded pulse" width="350" src="/img/error.png">
+                <p class="fs-3"> <span class="text-danger">Opps!</span> Page not found.</p>
+                <p class="lead">
+                    The page you’re looking for doesn’t exist.
+                  </p>
+           
+            </div>
+        </div>
+      </div>
+
+		</div>
+	</div>
+{% endblock %}

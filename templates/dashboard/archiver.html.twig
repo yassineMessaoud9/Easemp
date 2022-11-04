@@ -1,0 +1,111 @@
+{% extends 'baseadmin.html.twig' %}
+
+{% block title %}
+  Hello DashboardController!
+{% endblock %}
+
+{% block body %}
+  <div class=" mt-5">
+<div class="container-fluid px-4">
+                      
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Liste des employers archivé
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">    <thead>
+      <tr>
+        <th>
+          Id
+        </th>
+        <th>
+          Nom
+        </th>
+        <th>
+          Prenom
+        </th>
+        <th>
+          Email
+        </th>
+        <th>
+          Numerotel
+        </th>
+       
+        <th>
+          Specialite
+        </th>
+        <th>
+          Description
+        </th>
+        <th>
+          Adresse
+        </th>
+        <th>
+Détails        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for emplopyer in emplopyers %}
+        <tr>
+          <td>
+            {{ emplopyer.id }}
+          </td>
+          <td>
+            {{ emplopyer.nom }}
+          </td>
+          <td>
+            {{ emplopyer.prenom }}
+          </td>
+          <td>
+            {{ emplopyer.email }}
+          </td>
+          <td>
+            {{ emplopyer.numerotel }}
+          </td>
+         
+          <td>
+            {{ emplopyer.specialite }}
+          </td>
+          <td>
+            {{ emplopyer.description }}
+          </td>
+          <td>
+            {{ emplopyer.adresse }}
+          </td>
+          <td>
+            <a class="btn btn-outline-danger" href="{{
+              path(
+                'app_emplopyer_show',
+                {
+                  id: emplopyer.id
+                }
+              )
+              }}">
+           <i class="fa-solid fa-file-pdf  fa-xl"></i> 
+            </a>
+            {# <a href="{{
+              path(
+                'app_emplopyer_edit',
+                {
+                  id: emplopyer.id
+                }
+              )
+              }}">
+              edit
+            </a> #}
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="9">
+            no records found
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>                        </div>
+                    </div>
+
+{% endblock %}

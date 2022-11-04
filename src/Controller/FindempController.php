@@ -28,7 +28,7 @@ class FindempController extends AbstractController
     {
         $message = (new \Swift_Message($objet))
 
-            ->setFrom('easemploy@outlook.com')
+            ->setFrom('contact@easemploy.com')
             ->setTo($to)
             ->setBody(
                 $this->renderView(
@@ -104,10 +104,7 @@ class FindempController extends AbstractController
 
     ): Response {
         $form = $this->createFormBuilder()
-            ->add('to',EmailType::class, [
-                'attr' => ['class' => 'form-control mb-3'],
-                'label' => 'À: ',
-            ])
+           
             ->add('objet', TextType::class, [
                 'attr' => ['class' => 'form-control mb-3'],
                 'label' => 'Objet: ',
@@ -120,12 +117,20 @@ class FindempController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $to = $form['to']->getData();
+            $to = $findemp->getEmail();
             $objet = $form['objet']->getData();
             $body = $form['body']->getData();
-
+$name=$findemp->getNom();
             //  dd( $to, $objet, $body);
-            $this->SendMail($mailer, $to, $objet, $body);
+            $this->SendMail1($mailer, $to, $objet, $body,$name);
+            $request
+            ->getSession()
+            ->getFlashBag()
+            ->add(
+                'email',
+                'Email envoyé !'
+            );
+
         }
 
         return $this->render('findemp/edit.html.twig', [
@@ -157,4 +162,28 @@ class FindempController extends AbstractController
             Response::HTTP_SEE_OTHER
         );
     }
+
+
+
+    public function SendMail1(\Swift_Mailer $mailer, $to, $objet, $body,$name)
+    {
+        $message = (new \Swift_Message($objet))
+
+            ->setFrom('contact@easemploy.com')
+            ->setTo($to)
+            ->setBody(
+                $this->renderView(
+                    'findemp/renvoie.html.twig',['body' => $body , 'name'=>$name,'objet'=>$objet]
+                ),
+                
+                'text/html'
+            );
+
+        // you can remove the following code if you don't define a text version for your emails
+
+        $mailer->send($message);
+        return new Response("<script>alert('Mail envoyee')</script>");
+    }
+
+
 }

@@ -48,17 +48,16 @@ class EmplopyerType extends AbstractType
                     'Engineers' => 'Engineers',
                     'IT-Specialist' => 'IT-Specialist',
                     'Anesthetist technicians' => 'Anesthetist technicians',
-                    'Others' => 'Others',
+                    'Students' => 'Students',
+                    'Professional formation' => 'Professional formation',
+                    'Others' =>  'Others' ,
                 ),
                 'choice_attr' => [
                     'Select' => ['disabled'=>'disabled'],
                 ]
                 
             ])
-            ->add('otherspec', TextType::class, [
-                'attr' => ['class' => 'form-control mb-3'],
-                'label' => null,
-            ])
+           
             ->add('description', TextType::class, [
                 'attr' => ['class' => 'form-control mb-3'],
                 'label' => 'description',

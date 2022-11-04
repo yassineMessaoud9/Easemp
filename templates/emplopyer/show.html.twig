@@ -1,133 +1,165 @@
 {% extends 'baseadmin.html.twig' %}
 
 {% block title %}
-  Emplopyer
+	Emplopyer
 {% endblock %}
 
 {% block body %}
-  <div class="mt-5">
-    <div class="container-fluid px-4">
-      <div class="row">
-        <div class="col">
-          <div class="card mb-4" style="width: 47rem; height: 95rem;">
-            <div class="card-header">
-              <i class="fa fa-file me-1"></i>
-              <b>Cv de {{ emplopyer.prenom }} {{ emplopyer.nom }}</b>
-             
-            </div>
-            <div class="card-body">
-              <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item"
-                  src="/uploads/{{ emplopyer.cv }}"
-                  style="width: 45rem; height: 90rem;"
-                  allowfullscreen></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card mb-4" style="width: 47rem;">
-            <div class="card-header">
-              <i class="fa fa-info-circle me-1"></i>
-              <b>Informations</b>
-            </div>
-            <div class="card-body">
-              <table style="font-weight: bolder !important; font-size:25px !important;">
-              <tr>
-<td><i class="fa fa-user text-muted" aria-hidden="true"></i>
- 
-</td>
- <td class="text-muted"> &nbsp;{{emplopyer.prenom}} {{emplopyer.nom}}</td>
+	<div class="mt-5">
+		<div class="container-fluid px-4">
+			<div class="row">
+				<div class="col">
+					<div class="card mb-4" style="width: 47rem; height: 95rem;">
+						<div class="card-header">
+							<i class="fa fa-file me-1"></i>
+							<b>Cv de
+								{{ emplopyer.prenom }}
+								{{ emplopyer.nom }}</b>
 
-              </tr>
+						</div>
+						<div class="card-body">
+							<div class="embed-responsive embed-responsive-16by9">
+								<iframe class="embed-responsive-item" src="/uploads/{{ emplopyer.cv }}" style="width: 45rem; height: 90rem;" allowfullscreen></iframe>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card mb-4" style="width: 47rem;">
+						<div class="card-header">
+							<i class="fa fa-info-circle me-1"></i>
+							<b>Informations</b>
+						</div>
+						<div class="card-body">
+							<table style="font-weight: bolder !important; font-size:25px !important;">
+								<tr>
+									<td>
+										<i class="fa fa-user text-muted" aria-hidden="true"></i>
 
-              <tr>
-              <td>
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-              </td>
-              <td>  &nbsp;{{emplopyer.email}} </td>
-              </tr>
+									</td>
+									<td class="text-muted">
+										&nbsp;{{emplopyer.prenom}}
+										{{emplopyer.nom}}</td>
 
-              <tr>
-              <td><i class="fa fa-phone-square" aria-hidden="true"></i>
-</td>
-<td>&nbsp;{{emplopyer.numerotel}}</td>
-              </tr>
+								</tr>
+
+								<tr>
+									<td>
+										<i class="fa fa-envelope" aria-hidden="true"></i>
+									</td>
+									<td>
+										&nbsp;{{emplopyer.email}}
+									</td>
+								</tr>
+
+								<tr>
+									<td>
+										<i class="fa fa-phone-square" aria-hidden="true"></i>
+									</td>
+									<td>&nbsp;{{emplopyer.numerotel}}</td>
+								</tr>
 
 
-              <tr>
-              <td><i class="fa fa-indent" aria-hidden="true"></i>
-</td>
-<td>
-&nbsp; {{emplopyer.specialite}}
-</td>
-              </tr>
-<tr>
-<td>
-<i class="fa fa-plus" aria-hidden="true"></i>
-</td>
-<td>
+								<tr>
+									<td>
+										<i class="fa fa-indent" aria-hidden="true"></i>
+									</td>
+									<td>
+										&nbsp;
+										{{emplopyer.specialite}}
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<i class="fa fa-plus" aria-hidden="true"></i>
+									</td>
+									<td>
 
-&nbsp; {{emplopyer.description}}
+										&nbsp;
+										{{emplopyer.description}}
 
-</td>
+									</td>
 
-</tr>
-              <tr>
-              <td><i class="fa fa-location-arrow" aria-hidden="true"></i>
+								</tr>
+								<tr>
+									<td>
+										<i class="fa fa-location-arrow" aria-hidden="true"></i>
 
-</td>
-<td>&nbsp; {{emplopyer.adresse}}</td>
-</tr><tr><td>
-<i class="fa fa-bell" aria-hidden="true"></i>
-</td>
-<td>&nbsp; {{emplopyer.etat}}</td>
-              </tr>
-              </table>
-              
-          </div>
-               <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <i class="fa-solid fa-paper-plane"></i> Envoyer email
-              </button>
-              <a class="btn btn-dark container mt-2" href="{{ path('app_dashboard') }}">
-    <i class="fa-regular fa-circle-left"></i> back to list
-  </a>
+									</td>
+									<td>&nbsp;
+										{{emplopyer.adresse}}</td>
+								</tr>
+								<tr>
+									<td>
+										<i class="fa fa-bell" aria-hidden="true"></i>
+									</td>
+									<td>&nbsp;
+										{{emplopyer.etat}}</td>
+								</tr>
+							</table>
 
-    {{ include('emplopyer/_delete_form.html.twig') }}
+						</div>
+						<button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+							<i class="fa-solid fa-paper-plane"></i>
+							Envoyer email
+						</button>
+						<a class="btn btn-dark container mt-2" href="{{ path('app_dashboard') }}">
+							<i class="fa-regular fa-circle-left"></i>
+							back to list
+						</a>
+ {% if emplopyer.archived == 0 %}
+						<a class="btn btn-secondary mt-2" href="{{ path( 'app_emplopyer_archive', { id: emplopyer.id } ) }}">
 
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="modal fade" id="exampleModal"data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-    
-      <div class="modal-content">
-        <div class="modal-header" style="background-color:#eaeaea;">
-          <h5 class="modal-title" id="exampleModalLabel">Envoyer un e-mail</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-        <table style=" font-size:15px !important;">
-  <tr>
-  <td>{{ form_start(form) }}<div class="">
-      {{ form_widget(form) }}
+							<i class="fa-solid fa-box-archive"></i>
+							Archiver
+						</a>
 
-      <button class="btn btn-success"><i class="fa fa-paper-plane" aria-hidden="true"></i>
-  {{ button_label|default('Submit') }}</button>
+						 {% else %}
 
-  </div>{{ form_end(form) }}</td>
-  </tr>
+						 <a class="btn btn-secondary mt-2" href="{{ path( 'app_emplopyer_desarchiver', { id: emplopyer.id } ) }}">
 
-        </table>
-        </div>
-      {# <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-primary" value="Save changes">
-      </div> #}
-    </div>
-  </div>
-</div>
-  
+							<i class="fa-solid fa-box-archive"></i>
+							Desarchiver
+						</a>
 
-{% endblock %}
+						 {% endif %}
+						{{ include('emplopyer/_delete_form.html.twig') }}
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+
+				<div class="modal-content">
+					<div class="modal-header" style="background-color:#eaeaea;">
+						<h5 class="modal-title" id="exampleModalLabel">Envoyer un e-mail</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<table style=" font-size:15px !important;">
+							<tr>
+								<td>{{ form_start(form) }}<div class="">
+										{{ form_widget(form) }}
+
+										<button class="btn btn-success">
+											<i class="fa fa-paper-plane" aria-hidden="true"></i>
+											{{ button_label|default('Submit') }}</button>
+
+									</div>
+									{{ form_end(form) }}</td>
+							</tr>
+
+						</table>
+					</div>
+					{# <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					        <input type="submit" class="btn btn-primary" value="Save changes">
+					      </div> #}
+				</div>
+			</div>
+		</div>
+
+
+	{% endblock %}

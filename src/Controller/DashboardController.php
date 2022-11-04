@@ -12,6 +12,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Core\Security as SecurityCore;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class DashboardController extends AbstractController
 {
@@ -21,7 +24,16 @@ class DashboardController extends AbstractController
     public function index(EmplopyerRepository $emplopyerRepository): Response
     {
         return $this->render('dashboard/index.html.twig', [
-            'emplopyers' => $emplopyerRepository->findAll(),
+            'emplopyers' => $emplopyerRepository->findBy(array('archived' =>0)),
+        ]);
+    }
+     /**
+     * @Route("/archive", name="app_archive")
+     */
+    public function archive(EmplopyerRepository $emplopyerRepository): Response
+    {
+        return $this->render('dashboard/index.html.twig', [
+            'emplopyers' => $emplopyerRepository->findBy(array('archived' =>1)),
         ]);
     }
     /**
@@ -67,13 +79,13 @@ class DashboardController extends AbstractController
                 $emplopyerRepository->add($emplopyer);
 
                 $render = 'confirmation';
-                $this->SendMail($mailer, $to, $objet, $render,$body);
+                $this->SendMail($mailer, $to, $objet, $render, $body);
             } elseif ($etat == 'Refuser') {
                 $emplopyer->setEtat($etat);
                 $emplopyerRepository->add($emplopyer);
 
                 $render = 'sorry';
-                $this->SendMail($mailer, $to, $objet, $render,$body);
+                $this->SendMail($mailer, $to, $objet, $render, $body);
             }
             //  dd( $to, $objet, $body);
         }
@@ -84,16 +96,16 @@ class DashboardController extends AbstractController
         ]);
     }
 
-    public function SendMail(\Swift_Mailer $mailer, $to, $objet, $render,$body)
+    public function SendMail(\Swift_Mailer $mailer, $to, $objet, $render, $body)
     {
         $message = (new \Swift_Message($objet))
 
-            ->setFrom('easemploy@outlook.com')
+            ->setFrom('contact@easemploy.com')
             ->setTo($to)
             ->setBody(
-                $this->renderView(
-                    'dashboard/'.$render.'.html.twig',['text' => $body]
-                ),
+                $this->renderView('dashboard/' . $render . '.html.twig', [
+                    'text' => $body,
+                ]),
                 // templates/emails/registration.html.twig
                 //     'emplopyer/confirmation.html.twig'),
                 'text/html'

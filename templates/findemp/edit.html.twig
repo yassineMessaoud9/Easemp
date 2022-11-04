@@ -25,12 +25,20 @@
       <div class="row d-flex justify-content-center">
         <div class="col-lg-8">
           <h2 class="fw-bold mb-5">Envoyer email à <i class="text-muted">{{findemp.nom}}</i></h2>
-          
+          <span class="text-danger">{{findemp.email}}</span>
+{% if app.session.flashBag.has('email') %}
+          <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('email') %}
+              {{ msg }}
+            {% endfor %}
+          </div>
+        {% endif %}
+
             <!-- 2 column grid layout with text inputs for the first and last names -->
             <div class="row">
              
    {{ form_start(form) }}
-      {{ form_widget(form) }}
+      {{ form_widget(form |raw) }}
 
       <button class="btn btn-success"><i class="fa fa-paper-plane" aria-hidden="true"></i>
   {{ button_label|default('Submit') }}</button>

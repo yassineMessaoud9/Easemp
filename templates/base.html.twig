@@ -1,147 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
-<head>
-    <meta charset="utf-8">
-    <title>Easemploy</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-{% block stylesheets %}
-    <link href="img/favicon.ico" rel="icon">
+	<head>
+		<meta charset="utf-8">
+		<title>Easemploy</title>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta content="" name="keywords">
+		<meta content="" name="description">
+		{% block stylesheets %}
+			<link
+			href="/img/logo.png" rel="icon">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
-    
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+			<!-- Google Web Fonts -->
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+			<link
+			rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
-    <!-- Libraries Stylesheet -->
-    <link href="{{asset('lib/animate/animate.min.css')}}" rel="stylesheet">
-    <link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
-    <link href="{{asset('css/confirmation.css')}}" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="{{asset('css/style.css')}}" rel="stylesheet">
-
-{% endblock %}
-    <!-- Favicon -->
-</head>
-
-<body>
-         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End -->
+			<!-- Icon Font Stylesheet -->
+			<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+			<link
+			rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}"/>
+			<!-- Libraries Stylesheet -->
+			<link href="{{asset('lib/animate/animate.min.css')}}" rel="stylesheet">
+			<link href="{{asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+			<link href="{{asset('css/confirmation.css')}}" rel="stylesheet">
+			<!-- CSS only -->
+			<!-- CSS only -->
+			<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+			<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+			<!-- Customized Bootstrap Stylesheet -->
+			<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+			<link
+			rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css"/>
+			<!-- Template Stylesheet -->
+			<link href="{{asset('css/style.css')}}" rel="stylesheet">
+			<link
+			rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}"/>
 
 
-        <!-- Navbar Start -->
-        <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-            <a href="index.html" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-                <h1 class="m-0 text-primary">Easemploy</h1>
-            </a>
-            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto p-4 p-lg-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Jobs</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="job-list.html" class="dropdown-item">Job List</a>
-                            <a href="job-detail.html" class="dropdown-item">Job Detail</a>
-                        </div>
-                    </div>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Languages</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                          <!-- GTranslate: https://gtranslate.io/ -->
-<a href="#" onclick="doGTranslate('en|ar');return false;" title="Arabic" class="gflag nturl" style="background-position:-100px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Arabic" /></a><a href="#" onclick="doGTranslate('en|en');return false;" title="English" class="gflag nturl" style="background-position:-0px -0px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="English" /></a><a href="#" onclick="doGTranslate('en|fr');return false;" title="French" class="gflag nturl" style="background-position:-200px -100px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="French" /></a><a href="#" onclick="doGTranslate('en|de');return false;" title="German" class="gflag nturl" style="background-position:-300px -100px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="German" /></a><a href="#" onclick="doGTranslate('en|ru');return false;" title="Russian" class="gflag nturl" style="background-position:-500px -200px;"><img src="//gtranslate.net/flags/blank.png" height="24" width="24" alt="Russian" /></a>
-
-<style type="text/css">
-<!--
-a.gflag {vertical-align:middle;font-size:24px;padding:1px 0;background-repeat:no-repeat;background-image:url(//gtranslate.net/flags/24.png);}
-a.gflag img {border:0;}
-a.gflag:hover {background-image:url(//gtranslate.net/flags/24a.png);}
-#goog-gt-tt {display:none !important;}
-.goog-te-banner-frame {display:none !important;}
-.goog-te-menu-value:hover {text-decoration:none !important;}
-body {top:0 !important;}
-#google_translate_element2 {display:none!important;}
-</style>
-
-<div id="google_translate_element2"></div>
-<script type="text/javascript">
-function googleTranslateElementInit2() {new google.translate.TranslateElement({pageLanguage: 'en',autoDisplay: false}, 'google_translate_element2');}
-</script><script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit2"></script>
+			{# <script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
+			<script>
+			    Weglot.initialize({
+			        api_key: 'wg_c6e21d8681ac8a772f687b2564f4ffcb3'
+			    });
+			</script> #}
+			<style>
+				#google_translate_element,
+				.skiptranslate {
+					display: none;
+				}
+				body {
+					top: 0 !important;
+				}
 
 
-<script type="text/javascript">
-/* <![CDATA[ */
-eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('6 7(a,b){n{4(2.9){3 c=2.9("o");c.p(b,f,f);a.q(c)}g{3 c=2.r();a.s(\'t\'+b,c)}}u(e){}}6 h(a){4(a.8)a=a.8;4(a==\'\')v;3 b=a.w(\'|\')[1];3 c;3 d=2.x(\'y\');z(3 i=0;i<d.5;i++)4(d[i].A==\'B-C-D\')c=d[i];4(2.j(\'k\')==E||2.j(\'k\').l.5==0||c.5==0||c.l.5==0){F(6(){h(a)},G)}g{c.8=b;7(c,\'m\');7(c,\'m\')}}',43,43,'||document|var|if|length|function|GTranslateFireEvent|value|createEvent||||||true|else|doGTranslate||getElementById|google_translate_element2|innerHTML|change|try|HTMLEvents|initEvent|dispatchEvent|createEventObject|fireEvent|on|catch|return|split|getElementsByTagName|select|for|className|goog|te|combo|null|setTimeout|500'.split('|'),0,{}))
-/* ]]> */
-</script>
-
-                        </div>
-                    </div>
-                    <a href="{{path('app_findemp_new')}}" class="nav-item nav-link border-left border-primary">Searching for employees <i class="fa fa-search ms-3"></i></a>
-                    
-                </div>
-                <a href="{{path('app_employer_new')}}"  class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Apply For A Job<i class="fa fa-arrow-right ms-3"></i></a>
-            </div>
-        </nav>
-        <!-- Navbar End -->
+			</style>
 
 
+		{% endblock %}
+
+		<!-- Favicon -->
+	</head>
+
+	<body>
+		<!-- Spinner Start -->
+		<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+			<div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+				<span class="sr-only">Loading...</span>
+			</div>
+		</div>
+		<!-- Spinner End -->
 
 
-{% block body %}
+		<!-- Navbar Start -->
+		<nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+			<a href="{{path('app_home')}}" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
+				<img class="m-0" src="/img/logo.png" width="110" height="40">
+			</a>
+			<button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<div class="navbar-nav ms-auto p-4 p-lg-0">
+					<a href="{{path('app_about')}}" data-lang='about' class="nav-item nav-link">About us</a>
+					<a href="{{path('app_feedback_new')}}" data-lang='contact' class="nav-item nav-link">Contact us</a>
 
-{% endblock %}
-        <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" style="margin-top:220px !important;"data-wow-delay="0.1s">
-            
-            <div class="container">
-                <div class="copyright">
-                    <div class="row">
-                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">Easemploy</a>
-							
-							 Made with ❤️ by <a class="border-bottom" href="https://wico.tn">Wico Technology</a> 
-                        </div>
-                        <div class="col-md-6 text-center text-md-end">
-                            <div class="footer-menu">
-                                <a href="">Home</a>
-                                <a href="">Cookies</a>
-                                <a href="">Help</a>
-                                <a href="">FQAs</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer End -->
-{% block javascripts %}
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{asset('lib/wow/wow.min.js')}}"></script>
-    <script src="{{asset('lib/easing/easing.min.js')}}"></script>
-    <script src="{{asset('lib/waypoints/waypoints.min.js')}}"></script>
-    <script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
+					<a href="{{path('app_findemp_new')}}" data-lang='btnsearchemp' class="nav-item nav-link border-left border-primary">Searching for employees
+						<i class="fa fa-search ms-3"></i>
+					</a>
 
-    <!-- Template Javascript -->
-    <script src="{{asset('js/main.js')}}"></script>
+				</div>
+				<a href="{{path('app_employer_new')}}" data-lang='applynow' class="btn btn-primary rounded-0 py-4 d-lg-block">Apply Now<i class="fa fa-arrow-right ms-3"></i>
+				</a>
+			</div>
 
-{% endblock %}
+		</nav>
+		<!-- Navbar End -->
+
+
+		{% block body %}{% endblock %}
+		<!-- Footer Start -->
+		<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" style="margin-top:300px !important;" data-wow-delay="0.1s">
+
+			<div class="container">
+				<div class="copyright">
+					<div class="row">
+						<div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+							&copy;
+							<a class="border-bottom" href="#">Easemploy</a>
+
+							<i class="" data-lang='madewith'> Made with ❤️ by</i>
+							<a class="border-bottom" href="https://wico.tn">Wico Technology</a>
+
+							&nbsp; &nbsp;&nbsp;<a href="https://www.instagram.com/easemploy/">
+								<i class="fa-brands fa-instagram"></i>
+							</a>
+							&nbsp;<a href="https://www.instagram.com/easemploy/">
+								<i class="fa-brands fa-facebook"></i>
+							</a>
+						</div>
+
+						<div class="col-md-6  text-center text-md-end">
+
+							<div class="footer-menu">
+								<select style="width:95px !important; color:white !important;" class="form-control bg-dark input-sm" id='langue-selector'>
+								
+									<option value='en'>English </option>
+									<option value='gr'>Allemand</option>
+
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Footer End -->
+		{% block javascripts %}
+			<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+			<script src="{{asset('lib/wow/wow.min.js')}}"></script>
+			<script src="{{asset('lib/translator.js')}}"></script>
+
+			<script src="{{asset('lib/easing/easing.min.js')}}"></script>
+			<script src="{{asset('lib/waypoints/waypoints.min.js')}}"></script>
+			<script src="{{asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
+			<script type="text/javascript" src="{{ asset('bundles/yourBundle/theNameOfTheScriptYouPutInRessourcesPublic.js') }}"></script>
+			<!-- JavaScript Bundle with Popper -->
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+			<!-- Template Javascript -->
+			<script src="{{asset('js/main.js')}}"></script>
+
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+			<script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+			<script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+
+			<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+			<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+			<script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+
+			<script>
+	window.addEventListener('load', (event) => {
+    nodes.forEach(node => {
+        let key = node.getAttribute('data-lang');
+        node.textContent = lang[localStorage.getItem('language')][key];
+    })
+});
+
+			</script>
+
+		{% endblock %}
+	</body>
+</html>
